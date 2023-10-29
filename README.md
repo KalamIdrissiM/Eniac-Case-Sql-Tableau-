@@ -13,11 +13,7 @@ where product_category_name IN ('audio','consoles_games','eletronicos','informat
 group by Product_category;
 
 ## How many products of these tech categories have been sold (within the time window of the database snapshot)? What percentage does that represent from the overall number of products sold?
-select p.product_category_name as Product_category, count(distinct p.product_id) as numberofproducts_in_category, count(distinct ot.order_id) as Products_sold  
-from order_items as ot
-left join products as p on ot.product_id = p.product_id
-where p.product_category_name IN ('audio','consoles_games','eletronicos','informatica_acessorios','pc_gamer','pcs','sinalizacao_e_seguranca','telefonia')
-group by Product_category;
+
 
 select p.product_category_name as Product_category, count(distinct p.product_id) as numberofproducts_in_category, sum(ot.order_item_id) as Products_sold  -- ordr_item_id calculate number of items within order_id as well
 from order_items as ot
